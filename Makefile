@@ -1,3 +1,5 @@
+LAB=lazy
+
 K=kernel
 U=user
 
