@@ -42,10 +42,18 @@ sys_sbrk(void)
   int n;
 
   argint(0, &n);
-  addr = myproc()->sz;
-  if(growproc(n) < 0)
-    return -1;
-  return addr;
+  struct proc *p = myproc();
+ 
+
+  addr = p->sz;  // old sz
+  if(n>=0 ) 
+  {
+    p->sz+=n;  //afxanei to mege8os tis diergasias
+  }
+  else if (n < 0 ) { //gia arnitikes times
+   growproc(n);
+  }
+  return addr; //return old
 }
 
 uint64
